@@ -8,10 +8,12 @@ import javax.servlet.annotation.*;
 public class HelloServlet extends HttpServlet {
     private String message;
 
+    @Override
     public void init() {
         message = "Specifications";
     }
 
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
 
@@ -23,7 +25,8 @@ public class HelloServlet extends HttpServlet {
         out.println("</div>");
         out.println("</body></html>");
     }
-
+    @Override
     public void destroy() {
+        //destroy
     }
 }
