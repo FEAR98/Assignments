@@ -12,14 +12,14 @@
 <body>
 
 <div style="text-align: center;">
-    <span style="color: coral; font-size: xx-large; ">  ATM  </span>
+    <span style="color: coral; font-size: xx-large; ">  Random Number Generator  </span>
 </div>
 <H3 ALIGN="CENTER">
+    Random number from 0 to 100 :
+    <span style="color: red">
+        <%= (int) (Math.random() * 100) %>
 
-    <h2> First ATM </h2>
-    Current Balance: <B>"+ act.balance +"</B><BR>
-    <button type=\"button\">-150</button>
-
+    </span>
 
 </H3>
 <div style="text-align: center;">

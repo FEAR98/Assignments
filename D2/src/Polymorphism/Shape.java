@@ -1,7 +1,6 @@
 package Polymorphism;
 
-public abstract class Shape implements Drawable
-{
+public abstract class Shape implements Drawable {
     private String Shape;
 
 
@@ -13,9 +12,8 @@ public abstract class Shape implements Drawable
         Shape = shape;
     }
 
-    public void drawShape(Shape s)
-    {
-        System.out.println("Shape: "+s.getShape());
+    public void drawShape(Shape s) {
+        System.out.println("Shape: " + s.getShape());
     }
 
     public abstract void getDrawingInfo();

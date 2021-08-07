@@ -9,6 +9,7 @@ public class Passenger {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -16,6 +17,7 @@ public class Passenger {
     public String getDestination() {
         return destination;
     }
+
     public void setDestination(String destination) {
         this.destination = destination;
     }

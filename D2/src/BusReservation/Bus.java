@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 public class Bus {
 
-    private int capacity=10;
+    private int capacity = 10;
     private String destination;
     private ArrayList<Passenger> passengers = new ArrayList<>();
-
-
 
 
     public String getDestination() {
@@ -20,8 +18,7 @@ public class Bus {
     }
 
 
-    public void insertPassenger(Passenger p, Destination d)
-    {
+    public void insertPassenger(Passenger p, Destination d) {
 
     }
 }

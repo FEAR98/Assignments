@@ -1,7 +1,6 @@
 package BusReservation;
 
-public enum Destination
-{
+public enum Destination {
     ISTANBUL,
     ANKARA,
     IZMIR

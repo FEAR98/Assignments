@@ -1,9 +1,7 @@
 package Polymorphism;
 
-public class Circle extends Shape
-{
-    public void drawShape(Circle c)
-    {
+public class Circle extends Shape {
+    public void drawShape(Circle c) {
         System.out.println("Circle Shape: " + c.getShape());
     }
 

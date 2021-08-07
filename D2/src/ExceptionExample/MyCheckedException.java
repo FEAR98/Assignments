@@ -1,6 +1,5 @@
 package ExceptionExample;
 
-public class MyCheckedException extends Exception
-{
+public class MyCheckedException extends Exception {
 
 }
