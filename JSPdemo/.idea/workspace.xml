@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="JSPdemo:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7b91f788-4a96-4a53-813e-24aaae3788d4" name="Default Changelist" comment="W2">
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/ATM.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/Account.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/Destination.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/dynamicServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/management/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/showHeaders.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../D2/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../D2/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../D2/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../D2/D2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../D2/D2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../D2/src/BusReservation/Bus.java" beforeDir="false" afterPath="$PROJECT_DIR$/../D2/src/BusReservation/Bus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../D2/src/BusReservation/Destination.java" beforeDir="false" afterPath="$PROJECT_DIR$/../D2/src/BusReservation/Destination.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../D2/src/BusReservation/Passenger.java" beforeDir="false" afterPath="$PROJECT_DIR$/../D2/src/BusReservation/Passenger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../D2/src/ExceptionExample/Divider.java" beforeDir="false" afterPath="$PROJECT_DIR$/../D2/src/ExceptionExample/Divider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../D2/src/ExceptionExample/Executor.java" beforeDir="false" afterPath="$PROJECT_DIR$/../D2/src/ExceptionExample/Executor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../D2/src/ExceptionExample/MyCheckedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../D2/src/ExceptionExample/MyCheckedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../D2/src/ExceptionExample/MyUncheckedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../D2/src/ExceptionExample/MyUncheckedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../D2/src/ExceptionExample/TestException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../D2/src/ExceptionExample/TestException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../D2/src/Polymorphism/Circle.java" beforeDir="false" afterPath="$PROJECT_DIR$/../D2/src/Polymorphism/Circle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../D2/src/Polymorphism/Drawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/../D2/src/Polymorphism/Drawable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../D2/src/Polymorphism/Pen.java" beforeDir="false" afterPath="$PROJECT_DIR$/../D2/src/Polymorphism/Pen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../D2/src/Polymorphism/Rectangular.java" beforeDir="false" afterPath="$PROJECT_DIR$/../D2/src/Polymorphism/Rectangular.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../D2/src/Polymorphism/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/../D2/src/Polymorphism/Shape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../D2/src/ThePen/Circle.java" beforeDir="false" afterPath="$PROJECT_DIR$/../D2/src/ThePen/Circle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../D2/src/ThePen/Pen.java" beforeDir="false" afterPath="$PROJECT_DIR$/../D2/src/ThePen/Pen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../D2/src/ThePen/Rectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/../D2/src/ThePen/Rectangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+      <option value="module" />
+    </option>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Jsp File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/webapp/showHeaders.jsp" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="false" />
+    <option name="FILTER_DEBUG" value="false" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="ProjectId" id="1wAfnOBLTyb2xT4P7j3qehcGhy3" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF/management" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="util" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Emre\IdeaProjects\JSPdemo\src\main\webapp\WEB-INF\management" />
+      <recent name="C:\Users\Emre\IdeaProjects\JSPdemo\src\main\webapp" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Emre\IdeaProjects\JSPdemo\src\main\webapp\WEB-INF\management" />
+      <recent name="C:\Users\Emre\IdeaProjects\JSPdemo\src\main\webapp" />
+      <recent name="C:\Users\Emre\IdeaProjects\JSPdemo\src\main\webapp\WEB-INF\header" />
+      <recent name="C:\Users\Emre\IdeaProjects\JSPdemo\src\main\webapp\WEB-INF\home" />
+      <recent name="C:\Users\Emre\IdeaProjects\JSPdemo\src\main\webapp\WEB-INF" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn compile" />
+      <command value="mvn package" />
+      <command value="mvn install" />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tomcat 9.0.50" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.50" ALTERNATIVE_JRE_ENABLED="false">
+      <deployment>
+        <artifact name="JSPdemo:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/JSPdemo_war_exploded" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="c7088299-4c1b-48b1-9107-d2a37b8a47b1" />
+      </server-settings>
+      <output_file path="$USER_HOME$/Desktop/FirstApplication/log.txt" is_save="true" />
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="52564" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="JSPdemo:war exploded" />
+        </option>
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7b91f788-4a96-4a53-813e-24aaae3788d4" name="Default Changelist" comment="" />
+      <created>1627906484202</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1627906484202</updated>
+      <workItem from="1627906485324" duration="2425000" />
+      <workItem from="1627911164953" duration="1287000" />
+      <workItem from="1627971841478" duration="58000" />
+      <workItem from="1627972494351" duration="2092000" />
+      <workItem from="1627974722039" duration="14635000" />
+      <workItem from="1628057538312" duration="72000" />
+    </task>
+    <task id="LOCAL-00001" summary="W2">
+      <created>1627986856831</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1627986856831</updated>
+    </task>
+    <task id="LOCAL-00002" summary="W2">
+      <created>1627987025530</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1627987025530</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="W2" />
+    <option name="LAST_COMMIT_MESSAGE" value="W2" />
+  </component>
+</project>

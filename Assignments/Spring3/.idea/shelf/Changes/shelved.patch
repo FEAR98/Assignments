@@ -1,0 +1,684 @@
+Index: src/main/java/com/springProject/dao/UserDao.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/springProject/dao/UserDao.java b/src/main/java/com/springProject/dao/UserDao.java
+new file mode 100644
+--- /dev/null	(date 1629473571748)
++++ b/src/main/java/com/springProject/dao/UserDao.java	(date 1629473571748)
+@@ -0,0 +1,49 @@
++package com.springProject.dao;
++
++
++import com.springProject.beans.User;
++import org.springframework.jdbc.core.BeanPropertyRowMapper;
++import org.springframework.jdbc.core.JdbcTemplate;
++import org.springframework.jdbc.core.RowMapper;
++
++import java.sql.ResultSet;
++import java.sql.SQLException;
++import java.util.List;
++
++public class UserDao {
++    JdbcTemplate template;
++
++    public void setTemplate(JdbcTemplate template) {
++        this.template = template;
++    }
++    public int save(User user){
++        String sql="insert into users(username,password,email,birthday,sex,enabled) values('"+user.getUsername()+"','"+user.getPassword()+"',"+user.getEmail()+"',"+user.getBirthday()+"',"+user.getSex()+",'"+user.getEnabled()+"')";
++        return template.update(sql);
++    }
++    public int update(User  user){
++        String sql="update users set password='"+user.getPassword()+"', email="+user.getEmail()+",birthday="+user.getBirthday()+",sex="+user.getSex()+",enabled='"+user.getEnabled()+"' where username="+user.getUsername()+"";
++        return template.update(sql);
++    }
++    public int delete(String username){
++        String sql="delete from users where username="+username+"";
++        return template.update(sql);
++    }
++    public User getUserByUsername(String username){
++        String sql="select * from users where username=?";
++        return template.queryForObject(sql, new Object[]{username},new BeanPropertyRowMapper<User>(User.class));
++    }
++    public List<User> getUsers(){
++        return template.query("select * from users",new RowMapper<User>(){
++            public User mapRow(ResultSet rs, int row) throws SQLException {
++                User user=new User();
++                user.setUsername(rs.getString(1));
++                user.setPassword(rs.getString(2));
++                user.setEmail(rs.getString(3));
++                user.setBirthday(rs.getString(4));
++                user.setSex(rs.getShort(5));
++                user.setEnabled((rs.getByte(6)));
++                return user;
++            }
++        });
++    }
++}
+\ No newline at end of file
+Index: src/main/webapp/WEB-INF/jsp/Registration.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/WEB-INF/jsp/Registration.jsp b/src/main/webapp/WEB-INF/jsp/Registration.jsp
+new file mode 100644
+--- /dev/null	(date 1629475550319)
++++ b/src/main/webapp/WEB-INF/jsp/Registration.jsp	(date 1629475550319)
+@@ -0,0 +1,36 @@
++<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>  
++<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
++
++		<h1>Registration</h1>
++       <form:form method="post" action="save">  
++      	<table >  
++         <tr>  
++          <td>Name : </td> 
++          <td><form:input path="username"  /></td>
++         </tr>  
++         <tr>  
++          <td>Salary :</td>  
++          <td><form:input path="password" /></td>
++         </tr> 
++         <tr>  
++          <td>Designation :</td>  
++          <td><form:input path="email" /></td>
++         </tr>
++            <tr>
++                <td>Birthday :</td>
++                <td><form:input path="birtday" /></td>
++            </tr>
++            <tr>
++                <td>Sex :</td>
++                <td><form:input path="sex" /></td>
++            </tr>
++            <tr>
++                <td>Enabled :</td>
++                <td><form:input path="enabled" /></td>
++            </tr>
++            <tr>
++            <td> </td>
++          <td><input type="submit" value="Save" /></td>  
++         </tr>  
++        </table>  
++       </form:form>  
+Index: src/main/webapp/WEB-INF/jsp/Login.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/WEB-INF/jsp/Login.html b/src/main/webapp/WEB-INF/jsp/Login.html
+new file mode 100644
+--- /dev/null	(date 1628073631931)
++++ b/src/main/webapp/WEB-INF/jsp/Login.html	(date 1628073631931)
+@@ -0,0 +1,14 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <title>Welcome to Login Page</title>
++</head>
++<body>
++<form name="loginForm" method="get" action="loginServlet">
++  Username: <input type="text" name="username"/> <br/>
++  Password: <input type="password" name="password"/> <br/>
++  <input type="submit" value="Login" />
++</form>
++</body>
++</html>
+\ No newline at end of file
+Index: src/main/webapp/WEB-INF/jsp/List-Users.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/WEB-INF/jsp/List-Users.jsp b/src/main/webapp/WEB-INF/jsp/List-Users.jsp
+new file mode 100644
+--- /dev/null	(date 1629475004103)
++++ b/src/main/webapp/WEB-INF/jsp/List-Users.jsp	(date 1629475004103)
+@@ -0,0 +1,21 @@
++    <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>  
++    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
++
++	<h1>Employees List</h1>
++	<table border="2" width="70%" cellpadding="2">
++	<tr><th>Username</th><th>Password</th><th>Email</th><th>Birthday</th><th>Edit</th><th>Delete</th></tr>
++    <c:forEach var="user" items="${list}">
++    <tr>
++    <td>${user.username}</td>
++    <td>${user.password}</td>
++    <td>${user.email}</td>
++    <td>${user.birthday}</td>
++        <td>${user.sex}</td>
++        <td>${user.enabled}</td>
++    <td><a href="edituser/${user.username}">Edit</a></td>
++    <td><a href="deleteuser/${user.username}">Delete</a></td>
++    </tr>
++    </c:forEach>
++    </table>
++    <br/>
++    <a href="empform">Add New User</a>
+\ No newline at end of file
+Index: .idea/dataSources.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/dataSources.xml b/.idea/dataSources.xml
+new file mode 100644
+--- /dev/null	(date 1629474193588)
++++ b/.idea/dataSources.xml	(date 1629474193588)
+@@ -0,0 +1,12 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
++    <data-source source="LOCAL" name="@localhost" uuid="64eb4258-0e96-418f-a699-fdfcb8bb48b1">
++      <driver-ref>mysql.8</driver-ref>
++      <synchronize>true</synchronize>
++      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
++      <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
++      <working-dir>$ProjectFileDir$</working-dir>
++    </data-source>
++  </component>
++</project>
+\ No newline at end of file
+Index: src/main/webapp/WEB-INF/web.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/WEB-INF/web.xml b/src/main/webapp/WEB-INF/web.xml
+new file mode 100644
+--- /dev/null	(date 1629473693637)
++++ b/src/main/webapp/WEB-INF/web.xml	(date 1629473693637)
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
++    <display-name>SpringMVC</display-name>
++    <servlet>
++        <servlet-name>spring</servlet-name>
++        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
++        <load-on-startup>1</load-on-startup>
++    </servlet>
++    <servlet-mapping>
++        <servlet-name>spring</servlet-name>
++        <url-pattern>/</url-pattern>
++    </servlet-mapping>
++</web-app>
+\ No newline at end of file
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+new file mode 100644
+--- /dev/null	(date 1629474938988)
++++ b/pom.xml	(date 1629474938988)
+@@ -0,0 +1,61 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project xmlns="http://maven.apache.org/POM/4.0.0"
++         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
++         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++    <modelVersion>4.0.0</modelVersion>
++
++    <groupId>org.example</groupId>
++    <artifactId>Spring3</artifactId>
++    <version>1.0-SNAPSHOT</version>
++
++    <properties>
++        <maven.compiler.source>13</maven.compiler.source>
++        <maven.compiler.target>13</maven.compiler.target>
++    </properties>
++
++    <dependencies>
++        <dependency>
++            <groupId>org.springframework</groupId>
++            <artifactId>spring-webmvc</artifactId>
++            <version>5.3.9</version>
++        </dependency>
++
++        <!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-jasper -->
++        <dependency>
++            <groupId>org.apache.tomcat</groupId>
++            <artifactId>tomcat-jasper</artifactId>
++            <version>10.0.8</version>
++        </dependency>
++
++
++        <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
++        <dependency>
++            <groupId>javax.servlet</groupId>
++            <artifactId>servlet-api</artifactId>
++            <version>2.3</version>
++        </dependency>
++        <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
++        <dependency>
++            <groupId>javax.servlet</groupId>
++            <artifactId>javax.servlet-api</artifactId>
++            <version>4.0.1</version>
++            <scope>provided</scope>
++        </dependency>
++
++
++        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
++        <dependency>
++            <groupId>mysql</groupId>
++            <artifactId>mysql-connector-java</artifactId>
++            <version>8.0.26</version>
++        </dependency>
++        <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
++        <dependency>
++            <groupId>org.springframework</groupId>
++            <artifactId>spring-jdbc</artifactId>
++            <version>5.3.9</version>
++        </dependency>
++
++    </dependencies>
++
++</project>
+\ No newline at end of file
+Index: target/maven-archiver/pom.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/target/maven-archiver/pom.properties b/target/maven-archiver/pom.properties
+new file mode 100644
+--- /dev/null	(date 1629472856892)
++++ b/target/maven-archiver/pom.properties	(date 1629472856892)
+@@ -0,0 +1,5 @@
++#Generated by Maven
++#Fri Aug 20 18:20:56 EET 2021
++groupId=org.example
++artifactId=Spring3
++version=1.0-SNAPSHOT
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1629472599167)
++++ b/.idea/.gitignore	(date 1629472599167)
+@@ -0,0 +1,8 @@
++# Default ignored files
++/shelf/
++/workspace.xml
++# Datasource local storage ignored files
++/dataSources/
++/dataSources.local.xml
++# Editor-based HTTP Client requests
++/httpRequests/
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+new file mode 100644
+--- /dev/null	(date 1629475628489)
++++ b/.idea/compiler.xml	(date 1629475628489)
+@@ -0,0 +1,13 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <annotationProcessing>
++      <profile name="Maven default annotation processors profile" enabled="true">
++        <sourceOutputDir name="target/generated-sources/annotations" />
++        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
++        <outputRelativeToContentRoot value="true" />
++        <module name="Spring3" />
++      </profile>
++    </annotationProcessing>
++  </component>
++</project>
+\ No newline at end of file
+Index: src/main/java/com/springProject/beans/User.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/springProject/beans/User.java b/src/main/java/com/springProject/beans/User.java
+new file mode 100644
+--- /dev/null	(date 1629473571743)
++++ b/src/main/java/com/springProject/beans/User.java	(date 1629473571743)
+@@ -0,0 +1,61 @@
++package com.springProject.beans;
++
++public class User
++{
++    private String username;
++    private String password;
++    private String email;
++    private String birthday;
++    private short sex;
++    private byte enabled;
++
++    public String getUsername() {
++        return username;
++    }
++
++    public void setUsername(String username) {
++        this.username = username;
++    }
++
++    public String getPassword() {
++        return password;
++    }
++
++    public void setPassword(String password) {
++        this.password = password;
++    }
++
++    public String getEmail() {
++        return email;
++    }
++
++    public void setEmail(String email) {
++        this.email = email;
++    }
++
++    public String getBirthday() {
++        return birthday;
++    }
++
++    public void setBirthday(String birthday) {
++        this.birthday = birthday;
++    }
++
++    public short getSex() {
++        return sex;
++    }
++
++    public void setSex(short sex) {
++        this.sex = sex;
++    }
++
++    public byte getEnabled() {
++        return enabled;
++    }
++
++    public void setEnabled(byte enabled) {
++        this.enabled = enabled;
++    }
++
++
++}
+Index: ../.idea/runConfigurations.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../.idea/runConfigurations.xml b/../.idea/runConfigurations.xml
+new file mode 100644
+--- /dev/null	(date 1629475594312)
++++ b/../.idea/runConfigurations.xml	(date 1629475594312)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RunConfigurationProducerService">
++    <option name="ignoredProducers">
++      <set>
++        <option value="com.android.tools.idea.compose.preview.runconfiguration.ComposePreviewRunConfigurationProducer" />
++      </set>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: ../.idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../.idea/vcs.xml b/../.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1629475594318)
++++ b/../.idea/vcs.xml	(date 1629475594318)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: src/main/webapp/index.jsp
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/index.jsp b/src/main/webapp/index.jsp
+new file mode 100644
+--- /dev/null	(date 1629474193333)
++++ b/src/main/webapp/index.jsp	(date 1629474193333)
+@@ -0,0 +1,2 @@
++<a href="empform">Add Employee</a>
++<a href="viewemp">View Employees</a>
+\ No newline at end of file
+Index: src/main/java/com/springProject/controllers/UserController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/springProject/controllers/UserController.java b/src/main/java/com/springProject/controllers/UserController.java
+new file mode 100644
+--- /dev/null	(date 1629473571752)
++++ b/src/main/java/com/springProject/controllers/UserController.java	(date 1629473571752)
+@@ -0,0 +1,58 @@
++package com.springProject.controllers;
++
++import com.springProject.beans.User;
++import com.springProject.dao.UserDao;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.stereotype.Controller;
++import org.springframework.ui.Model;
++import org.springframework.web.bind.annotation.ModelAttribute;
++import org.springframework.web.bind.annotation.PathVariable;
++import org.springframework.web.bind.annotation.RequestMapping;
++import org.springframework.web.bind.annotation.RequestMethod;
++
++import java.util.List;
++
++@Controller
++public class UserController {
++    @Autowired
++    UserDao userdao;//will inject dao from XML file
++
++
++    @RequestMapping("/userform")
++    public String showform(Model m){
++        m.addAttribute("command", new User());
++        return "userform";
++    }
++
++    @RequestMapping(value="/save",method = RequestMethod.POST)
++    public String save(@ModelAttribute("user") User user){
++        userdao.save(user);
++        return "redirect:/viewuser";
++    }
++
++    @RequestMapping("/viewuser")
++    public String viewuser(Model m){
++        List<User> list= userdao.getUsers();
++        m.addAttribute("list",list);
++        return "viewuser";
++    }
++
++    @RequestMapping(value="/edituser/{username}")
++    public String edit(@PathVariable String username, Model m){
++        User user= userdao.getUserByUsername(username);
++        m.addAttribute("command",user);
++        return "usereditform";
++    }
++
++    @RequestMapping(value="/editsave",method = RequestMethod.POST)
++    public String editsave(@ModelAttribute("user") User user){
++        userdao.update(user);
++        return "redirect:/viewuser";
++    }
++
++    @RequestMapping(value="/deleteuser/{username}",method = RequestMethod.GET)
++    public String delete(@PathVariable String username){
++        userdao.delete(username);
++        return "redirect:/viewuser";
++    }
++}
+Index: src/main/webapp/WEB-INF/spring-servlet.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/webapp/WEB-INF/spring-servlet.xml b/src/main/webapp/WEB-INF/spring-servlet.xml
+new file mode 100644
+--- /dev/null	(date 1629474193344)
++++ b/src/main/webapp/WEB-INF/spring-servlet.xml	(date 1629474193344)
+@@ -0,0 +1,32 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<beans xmlns="http://www.springframework.org/schema/beans"  
++    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
++    xmlns:p="http://www.springframework.org/schema/p"  
++    xmlns:context="http://www.springframework.org/schema/context"  
++    xsi:schemaLocation="http://www.springframework.org/schema/beans  
++http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
++http://www.springframework.org/schema/context  
++http://www.springframework.org/schema/context/spring-context-3.0.xsd">  
++
++<context:component-scan base-package="com.springProject.controllers"></context:component-scan>
++
++<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
++<property name="prefix" value="/WEB-INF/jsp/"></property>
++<property name="suffix" value=".jsp"></property>
++</bean>
++
++<bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  
++<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>  
++<property name="url" value="jdbc:mysql://localhost:3306/springDB"></property>  
++<property name="username" value="root"></property>  
++<property name="password" value=""></property>  
++</bean>  
++
++<bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">
++<property name="dataSource" ref="ds"></property>
++</bean>
++
++<bean id="dao" class="com.springProject.dao.UserDao">
++<property name="template" ref="jt"></property>
++</bean>
++</beans>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1629472591635)
++++ b/.idea/misc.xml	(date 1629472591635)
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ExternalStorageConfigurationManager" enabled="true" />
++  <component name="MavenProjectsManager">
++    <option name="originalFiles">
++      <list>
++        <option value="$PROJECT_DIR$/pom.xml" />
++      </list>
++    </option>
++  </component>
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_13" default="true" project-jdk-name="13" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/out" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/runConfigurations.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/runConfigurations.xml b/.idea/runConfigurations.xml
+new file mode 100644
+--- /dev/null	(date 1629472591646)
++++ b/.idea/runConfigurations.xml	(date 1629472591646)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RunConfigurationProducerService">
++    <option name="ignoredProducers">
++      <set>
++        <option value="com.android.tools.idea.compose.preview.runconfiguration.ComposePreviewRunConfigurationProducer" />
++      </set>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst b/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+new file mode 100644
+--- /dev/null	(date 1629474741050)
++++ b/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst	(date 1629474741050)
+@@ -0,0 +1,4 @@
++com\springProject\controllers\UserController.class
++com\springProject\beans\User.class
++com\springProject\dao\UserDao$1.class
++com\springProject\dao\UserDao.class
+Index: .idea/jarRepositories.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/jarRepositories.xml b/.idea/jarRepositories.xml
+new file mode 100644
+--- /dev/null	(date 1629472595098)
++++ b/.idea/jarRepositories.xml	(date 1629472595098)
+@@ -0,0 +1,20 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RemoteRepositoriesConfiguration">
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Central Repository" />
++      <option name="url" value="https://repo.maven.apache.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Maven Central repository" />
++      <option name="url" value="https://repo1.maven.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="jboss.community" />
++      <option name="name" value="JBoss Community repository" />
++      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
++    </remote-repository>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1629472595104)
++++ b/.idea/vcs.xml	(date 1629472595104)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$/../.." vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+diff --git a/.idea/sonarlint/issuestore/index.pb b/.idea/sonarlint/issuestore/index.pb
+new file mode 100644
+diff --git a/src/main/webapp/WEB-INF/jsp/Home.jsp b/src/main/webapp/WEB-INF/jsp/Home.jsp
+new file mode 100644
